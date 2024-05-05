@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Menyu, Filallar, BizHaqimizda, Boglanish } from "./pages/HeaderSide/index";
-// import { Foods } from "./components/Header/Foods";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
             <Route path="filial" element={<Filallar/>} />
             <Route path="about" element={<BizHaqimizda/>}/>
             <Route path="connect" element={<Boglanish/>}/>
-            {/* <Route path="/foods" element={<Foods/>}/> */}
           </Route>
         </Routes>
       </div>
@@ -23,3 +21,20 @@ function App() {
 }
 
 export default App;
+
+// App.js
+// import React from 'react';
+// import StickyMenu from './components/StickyMenu';
+// import MainContent from "./components/MainContent";
+
+// function App() {
+//   return (
+//     <div className="flex flex-col min-h-screen">
+//       <StickyMenu />
+//       <MainContent />
+//     </div>
+//   );
+// }
+
+// export default App;
+

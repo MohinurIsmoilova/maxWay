@@ -140,30 +140,33 @@ export const Ruyhat = () => {
         {directors.map((director, index) => (
           <div key={index}>
             <div className="w-[565px] p-5 shadow-sm mt-7 rounded-2xl">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start relative right-9 md:left-0">
                 <div className="flex flex-col">
-                  <h1 className="font-bold text-[21px]">{director.name}</h1>
-                  <p className="text-[15px]">{director.movies}</p>
+                  <h1 className="font-bold text-[21px] md:w-full w-[90%]">
+                    {director.name}
+                  </h1>
+                  <p className="md:text-[15px] md:w-full w-[62%] md:text-black text-gray-600">{director.movies}</p>
                 </div>
-                <div className="ml-auto">
+                <div className="ml-auto relative right-52 md:left-0">
                   <p
-                    className={
-                      director.open === "10:00 gacha yopiq"
+                    className={`md:w-full w-[80%] relative text-right
+                      ${director.open === "10:00 gacha yopiq"
                         ? "text-red-500"
                         : "text-green-500"
+        }`
                     }
                   >
                     {director.open}
                   </p>
                 </div>
               </div>
-              <div className="w-[525px] h-[1px] bg-slate-200 mt-3"></div>
+              <div className="md:w-[525px] w-[340px] h-[1px] bg-slate-200 mt-3 relative right-10 md:left-0"></div>
               <div className="flex space-x-[310px] mt-3">
-                <div>
+                <div className="relative right-9 md:left-0">
                   <p className="text-gray-500">Ish vaqti:</p>
                   <h2 className="w-[150%]">{director.time}</h2>
                 </div>
-                <div>
+                <div className="relative right-60 md:left-0">
                   <p className="text-gray-500 left-[58px] relative">Telefon:</p>
                   <h2>+998712005400</h2>
                 </div>

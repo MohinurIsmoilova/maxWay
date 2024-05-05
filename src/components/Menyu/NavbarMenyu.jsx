@@ -46,13 +46,14 @@ export const NavbarMenyu = () => {
 
   return (
     <>
-      <div className="mt-16 h-[80px] relative">
-        <Slider
-          {...settings}
-          ref={sliderRef}
-          className=" px-9 relative bottom-6"
-        >
-          {/* 
+      <div className="sticky top-0 z-index bg-white mt-6">
+        <div className="items-center justify-between pt-10">
+          <Slider
+            {...settings}
+            ref={sliderRef}
+            className=" px-9 relative bottom-6"
+          >
+            {/* 
           {items.map((item, index) => (
             <div key={index} className="relative left-7">
               <NavLink to="/" className="text-black">
@@ -63,116 +64,117 @@ export const NavbarMenyu = () => {
             </div>
           ))} */}
 
-          <button
-            className="mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(1)}
-          >
-            <div className="flex">
-              <div className="flex space-x-1">
-                <RestaurantOutlinedIcon className="text-red-500 top-[2px] relative p-[2px]" />
-                <RamenDiningOutlinedIcon className="text-orange-500 top-[2px] relative p-[2px]" />
+            <button
+              className="mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(1)}
+            >
+              <div className="flex">
+                <div className="flex space-x-1">
+                  <RestaurantOutlinedIcon className="text-red-500 top-[2px] relative p-[2px]" />
+                  <RamenDiningOutlinedIcon className="text-orange-500 top-[2px] relative p-[2px]" />
+                </div>
+
+                <NavLink to="/">Maxi BOX</NavLink>
               </div>
+            </button>
 
-              <NavLink to="/">Maxi BOX</NavLink>
-            </div>
-          </button>
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(2)}
+            >
+              <NavLink to="/">Klab Sendvich</NavLink>
+            </button>
 
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(3)}
+            >
+              <NavLink to="/">Lavash</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(4)}
+            >
+              <NavLink to="/">Shaurma</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(5)}
+            >
+              <NavLink to="/">Panini</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 relative active:focus:bg-purple-200 right-4 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(6)}
+            >
+              <NavLink to="/">Burger</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(7)}
+            >
+              <NavLink to="/">Donar Kebab</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(8)}
+            >
+              <NavLink to="/">Hot Dog</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(9)}
+            >
+              <NavLink to="/">Gazaklar</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(10)}
+            >
+              <NavLink to="/">Tamaddilar</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(11)}
+            >
+              <NavLink to="/">Desertlar</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(12)}
+            >
+              <NavLink to="/">Souslar</NavLink>
+            </button>
+
+            <button
+              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
+              onClick={() => setCounter(13)}
+            >
+              <NavLink to="/">Tamaddilar</NavLink>
+            </button>
+          </Slider>
           <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(2)}
+            className="absolute bottom-[24px] transform -translate-y-1/2 rounded-full text-black focus:outline-none"
+            onClick={goToPrev}
           >
-            <NavLink to="/">Klab Sendvich</NavLink>
+            <KeyboardArrowLeftIcon />
           </button>
-
           <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(3)}
+            className="absolute bottom-[24px] right-1 transform -translate-y-1/2 rounded-full text-black focus:outline-none"
+            onClick={goToNext}
           >
-            <NavLink to="/">Lavash</NavLink>
+            <NavigateNextIcon />
           </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(4)}
-          >
-            <NavLink to="/">Shaurma</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(5)}
-          >
-            <NavLink to="/">Panini</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 relative active:focus:bg-purple-200 right-4 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(6)}
-          >
-            <NavLink to="/">Burger</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(7)}
-          >
-            <NavLink to="/">Donar Kebab</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(8)}
-          >
-            <NavLink to="/">Hot Dog</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(9)}
-          >
-            <NavLink to="/">Gazaklar</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(10)}
-          >
-            <NavLink to="/">Tamaddilar</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(11)}
-          >
-            <NavLink to="/">Desertlar</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(12)}
-          >
-            <NavLink to="/">Souslar</NavLink>
-          </button>
-
-          <button
-            className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-            onClick={() => setCounter(13)}
-          >
-            <NavLink to="/">Tamaddilar</NavLink>
-          </button>
-        </Slider>
-        <button
-          className="absolute bottom-[52px] transform -translate-y-1/2 rounded-full text-black focus:outline-none"
-          onClick={goToPrev}
-        >
-          <KeyboardArrowLeftIcon />
-        </button>
-        <button
-          className="absolute bottom-[52px] right-1 transform -translate-y-1/2 rounded-full text-black focus:outline-none"
-          onClick={goToNext}
-        >
-          <NavigateNextIcon />
-        </button>
+        </div>
       </div>
 
       <div>{counter === 1 && <FirstFood />}</div>
