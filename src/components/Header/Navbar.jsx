@@ -308,27 +308,40 @@ export const Navbar = () => {
             onClose={handleClose1}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-            sx={{width:"600px", height:"700px", background:"white", borderRadius:"30px"}}
           >
-            <div className="p-4">
-              <div className="flex justify-between items-center">
-                <h2 id="modal-modal-title">Enter Your Phone Number</h2>
+            <div className="p-4 bg-white w-[440px] h-[360px] m-auto mt-36 rounded-2xl">
+              <div className="pt-4 relative left-[364px]">
                 <CloseIcon onClick={handleClose1} />
               </div>
-              <input
-                type="tel"
-                value={phoneNumber}
-                onChange={handlePhoneNumberChange}
-                placeholder="Phone number"
-                className="w-full border rounded p-2 mt-4"
-              />
-              <button
-                disabled={isButtonDisabled}
-                onClick={handleButtonClick}
-                className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded mt-4"
-              >
-                Submit
-              </button>
+              <div className="p-8 relative bottom-7">
+                <h4
+                  id="modal-modal-title"
+                  className="text-[33px] text-gray-800 font-bold text-center"
+                >
+                  Tizimga kirish
+                </h4>
+                <p className="text-center text-xl text-gray-500 font-normal mt-2">
+                  Telefon raqamingiz bilan tizimga kiring
+                </p>
+              </div>
+              <div className="relative bottom-10 p-4">
+                <label className=" text-gray-900 font-normal mt-2">
+                  Telefon raqam
+                </label>
+                <input
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                  className="w-full border rounded-xl p-2 mt-4"
+                />
+                <button
+                  disabled={isButtonDisabled}
+                  onClick={handleButtonClick}
+                  className="w-full bg-gray-300 h-[42px] text-gray-500 font-normal text-[15px] py-2 px-4 rounded-3xl mt-4"
+                >
+                  Kodni yuborish
+                </button>
+              </div>
             </div>
           </Modal>
         </div>
