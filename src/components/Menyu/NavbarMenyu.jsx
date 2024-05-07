@@ -113,84 +113,84 @@ export const NavbarMenyu = () => {
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(2)}
+              // onClick={() => setCounter(2)}
             >
               <NavLink to="/">Klab Sendvich</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(3)}
+              // onClick={() => setCounter(3)}
             >
               <NavLink to="/">Lavash</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(4)}
+              // onClick={() => setCounter(4)}
             >
               <NavLink to="/">Shaurma</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(5)}
+              // onClick={() => setCounter(5)}
             >
               <NavLink to="/">Panini</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 relative active:focus:bg-purple-200 right-4 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(6)}
+              // onClick={() => setCounter(6)}
             >
               <NavLink to="/">Burger</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(7)}
+              // onClick={() => setCounter(7)}
             >
               <NavLink to="/">Donar Kebab</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(8)}
+              // onClick={() => setCounter(8)}
             >
               <NavLink to="/">Hot Dog</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(9)}
+              // onClick={() => setCounter(9)}
             >
               <NavLink to="/">Gazaklar</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(10)}
+              // onClick={() => setCounter(10)}
             >
               <NavLink to="/">Tamaddilar</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(11)}
+              // onClick={() => setCounter(11)}
             >
               <NavLink to="/">Desertlar</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(12)}
+              // onClick={() => setCounter(12)}
             >
               <NavLink to="/">Souslar</NavLink>
             </button>
 
             <button
               className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(13)}
+              // onClick={() => setCounter(13)}
             >
               <NavLink to="/">Tamaddilar</NavLink>
             </button>
@@ -211,11 +211,11 @@ export const NavbarMenyu = () => {
       </div>
 
       <div>{counter === 1 && <FirstFood />}</div>
-      <div>{counter === 2 && <SecondFood />}</div>
+      {/* <div>{counter === 2 && <SecondFood />}</div>
       <div>{counter === 3 && <ThirdFood />}</div>
       <div>{counter === 4 && <FourthFood />}</div>
       <div>{counter === 5 && <FifthFood />}</div>
-      <div>{counter === 6 && <SixFood />}</div>
+      <div>{counter === 6 && <SixFood />}</div> */}
     </>
   );
 };
