@@ -13,7 +13,7 @@ export const BizHaqimizda = () => {
 
   return (
     <>
-      <div className="relative bottom-24 md:top-2">
+      <div className="relative bottom-0 md:top-2">
         <div className="md:w-[1200px] w-[345px] h-[1px] bg-slate-200 mt-2"></div>
 
         <div className="md:mt-8 mt-4">

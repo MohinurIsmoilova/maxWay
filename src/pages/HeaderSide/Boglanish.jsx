@@ -16,7 +16,7 @@ export const Boglanish = () => {
   const [count, setCount] = useState(1);
   return (
     <>
-      <div className="relative bottom-24 md:top-2">
+      <div className="relative bottom-0 md:top-2">
         <div className="w-[1200px] h-[1px] bg-slate-200 mt-2"></div>
 
         <div className="mt-8">

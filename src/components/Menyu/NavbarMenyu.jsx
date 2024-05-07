@@ -28,13 +28,46 @@ export const NavbarMenyu = () => {
   //     "Souslar",
   //   ];
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 1,
-  };
+ const settings = {
+   dots: false,
+   infinite: true,
+   speed: 500,
+   slidesToShow: 7,
+   slidesToScroll: 1,
+   responsive: [
+     {
+       breakpoint: 1536, // defines screen size for 2xl screens
+       settings: {
+         slidesToShow: 7, // show 7 slides on screens <= 1536px
+       },
+     },
+     {
+       breakpoint: 1280, // defines screen size for xl screens
+       settings: {
+         slidesToShow: 6, // show 6 slides on screens <= 1280px
+       },
+     },
+     {
+       breakpoint: 1024, // defines screen size for lg screens
+       settings: {
+         slidesToShow: 1, // show 5 slides on screens <= 1024px
+       },
+     },
+     {
+       breakpoint: 768, // defines screen size for md screens
+       settings: {
+         slidesToShow: 1, // show 4 slides on screens <= 768px
+       },
+     },
+     {
+       breakpoint: 640, // defines screen size for sm screens
+       settings: {
+         slidesToShow: 1, // show 3 slides on screens <= 640px
+       },
+     },
+     // Add more breakpoints and settings as needed
+   ],
+ };
 
   const goToNext = () => {
     sliderRef.current.slickNext();
@@ -51,7 +84,7 @@ export const NavbarMenyu = () => {
           <Slider
             {...settings}
             ref={sliderRef}
-            className=" px-9 relative bottom-6"
+            className="px-9 relative bottom-6"
           >
             {/* 
           {items.map((item, index) => (

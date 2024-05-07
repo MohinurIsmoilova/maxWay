@@ -9,13 +9,13 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ModalPage } from "./ModalPage";
 import { addToCart, updateTotalPrice } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
+import { Modal } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -86,6 +86,26 @@ export const Navbar = () => {
      setAnchorEl(null);
    };
 
+
+
+       const [open1, setOpen1] = useState(false);
+       const [phoneNumber, setPhoneNumber] = useState("");
+       const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+       const handleOpen1 = () => setOpen1(true);
+       const handleClose1 = () => setOpen1(false);
+
+       const handlePhoneNumberChange = (event) => {
+         const { value } = event.target;
+         setPhoneNumber(value);
+         setIsButtonDisabled(value === "");
+       };
+
+       const handleButtonClick = () => {
+         // Perform any action with the phone number here
+         console.log("Phone number:", phoneNumber);
+         handleClose(); // Close the modal after button click
+       };
   return (
     <>
       <div className="flex justify-between mt-4">
@@ -276,9 +296,41 @@ export const Navbar = () => {
             <p className="mt-[5px] w-full">{totalPrice} so'm</p>
           </NavLink>
 
-          <NavLink className="w-[32px] h-[32px] bg-purple-100 rounded-[50%] hidden md:block">
+          <NavLink
+            className="w-[32px] h-[32px] bg-purple-100 rounded-[50%] hidden md:block"
+            onClick={handleOpen1}
+          >
             <PersonIcon className="text-purple-900 ml-[4px] mt-[5px] p-[1px]" />
           </NavLink>
+
+          <Modal
+            open={open1}
+            onClose={handleClose1}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{width:"600px", height:"700px", background:"white", borderRadius:"30px"}}
+          >
+            <div className="p-4">
+              <div className="flex justify-between items-center">
+                <h2 id="modal-modal-title">Enter Your Phone Number</h2>
+                <CloseIcon onClick={handleClose1} />
+              </div>
+              <input
+                type="tel"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                placeholder="Phone number"
+                className="w-full border rounded p-2 mt-4"
+              />
+              <button
+                disabled={isButtonDisabled}
+                onClick={handleButtonClick}
+                className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded mt-4"
+              >
+                Submit
+              </button>
+            </div>
+          </Modal>
         </div>
       </div>
     </>
