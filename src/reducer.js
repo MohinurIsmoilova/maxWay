@@ -1,4 +1,3 @@
-import { updateTotalPrice } from './actions'; // Import the action
 // cartReducer.js
 const initialState = {
   cartItems: [],
@@ -22,6 +21,13 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         totalPrice: updatedTotalPrice,
+      };
+    case 'REMOVE_FROM_CART':
+      const updatedCartItems = state.cartItems.filter(item => item.id !== action.payload);
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+        totalPrice: updatedCartItems.reduce((total, item) => total + (item.productPrice * item.quantity), 0),
       };
     default:
       return state;

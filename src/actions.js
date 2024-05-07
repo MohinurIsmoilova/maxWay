@@ -7,3 +7,8 @@ export const addToCart = (item) => ({
 export const updateTotalPrice = () => ({
   type: 'UPDATE_TOTAL_PRICE',
 });
+
+export const removeFromCart = (itemId) => ({
+  type: 'REMOVE_FROM_CART',
+  payload: itemId,
+});

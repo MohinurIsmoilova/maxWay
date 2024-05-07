@@ -14,6 +14,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { ModalPage } from "./ModalPage";
 import { addToCart, updateTotalPrice } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
+import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "@mui/material/Menu";
 
 const style = {
   position: "absolute",
@@ -28,7 +30,6 @@ const style = {
 };
 
 export const Navbar = () => {
-
   //modal
   // const totalPrice = useSelector((state) => state.totalPrice);
   const [open, setOpen] = React.useState(false);
@@ -66,20 +67,97 @@ export const Navbar = () => {
     );
   };
 
-   const dispatch = useDispatch();
-   const totalPrice = useSelector((state) => state.cart.totalPrice);
-   console.log(totalPrice);
+  const dispatch = useDispatch();
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
+  console.log(totalPrice);
 
-   const handleAddToCart = (item) => {
-     dispatch(addToCart(item));
-     dispatch(updateTotalPrice()); // Dispatch updateTotalPrice action after adding to cart
-     alert("Successfully added to cart!");
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    dispatch(updateTotalPrice()); // Dispatch updateTotalPrice action after adding to cart
+    alert("Successfully added to cart!");
+  };
+
+   const [anchorEl, setAnchorEl] = React.useState(null);
+   const open11 = Boolean(anchorEl);
+   const handleClick = (event) => {
+     setAnchorEl(event.currentTarget);
+   };
+   const handleClose11 = () => {
+     setAnchorEl(null);
    };
 
   return (
     <>
       <div className="flex justify-between mt-4">
-        <div>
+        <div className="md:hidden block">
+          <Button
+            id="basic-button"
+            aria-controls={open11 ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open11 ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <MenuIcon className="text-black" />
+          </Button>
+
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open11}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            // sx={{width:"300px", height:"500px"}}
+          >
+            <MenuItem onClick={handleClose11}>
+              <div className="flex gap-5">
+                <h1 className="text-xl">Menyu</h1>
+                <CloseIcon className="text-gray-600" />
+              </div>
+            </MenuItem>
+            <MenuItem>
+              <nav className="mt-3 relative">
+                <ul className="leading-[50px]">
+                  <li>
+                    <NavLink
+                      to="/"
+                      className="hover:text-black text-zinc-700 text-[17px] font-medium"
+                    >
+                      Bosh sahifa
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/filial"
+                      className="hover:text-black text-zinc-700 text-[17px] font-medium"
+                    >
+                      Filiallar
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/about"
+                      className="hover:text-black text-zinc-700 text-[17px] font-medium"
+                    >
+                      Biz haqimizda
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/connect"
+                      className="hover:text-black text-zinc-700 text-[17px] font-medium"
+                    >
+                      Bog'lanish
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
+            </MenuItem>
+          </Menu>
+        </div>
+
+        <div className="relative right-16 md:left-0">
           <NavLink to="/">
             <img
               src="https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fcfff938f-a7f6-4694-972e-c7fa9c0f68ba&w=48&q=75"
@@ -88,7 +166,7 @@ export const Navbar = () => {
           </NavLink>
         </div>
 
-        <nav className="mt-3 relative left-4">
+        <nav className="mt-3 relative left-4 md:block hidden">
           <ul className="flex space-x-7">
             <li>
               <NavLink
@@ -125,7 +203,7 @@ export const Navbar = () => {
           </ul>
         </nav>
 
-        <button onClick={handleOpen}>
+        <button onClick={handleOpen} className="hidden md:block">
           <div className="flex mt-1 relative left-44">
             <div className="w-[40px] h-[45px] bg-purple-100 rounded-[50%]">
               <FmdGoodIcon className="text-purple-900 mt-[10px] p-[1px]" />
@@ -160,7 +238,7 @@ export const Navbar = () => {
 
         {/* modal end */}
 
-        <div className="ml-48">
+        <div className="ml-48 hidden md:block">
           <Select
             labelId="demo-simple-select-autowidth-label"
             id="demo-simple-select-autowidth"
@@ -198,7 +276,7 @@ export const Navbar = () => {
             <p className="mt-[5px] w-full">{totalPrice} so'm</p>
           </NavLink>
 
-          <NavLink className="w-[32px] h-[32px] bg-purple-100 rounded-[50%]">
+          <NavLink className="w-[32px] h-[32px] bg-purple-100 rounded-[50%] hidden md:block">
             <PersonIcon className="text-purple-900 ml-[4px] mt-[5px] p-[1px]" />
           </NavLink>
         </div>

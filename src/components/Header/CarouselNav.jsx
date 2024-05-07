@@ -17,7 +17,7 @@ export const CarouselNav = () => {
   };
 
   return (
-    <div className="md:mt-20">
+    <div className="md:mt-20 mt-20">
       <Slider {...settings} className="relative bottom-16">
         <div>
           <img
