@@ -1,3 +1,4 @@
+import { updateTotalPrice } from './actions'; // Import the action
 // cartReducer.js
 const initialState = {
   cartItems: [],
