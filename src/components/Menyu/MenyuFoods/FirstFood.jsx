@@ -41,7 +41,7 @@ export const FirstFood = ({ activeMenuItem }) => {
 
   // Group todos into chunks of 10 items
   const chunkedTodos = todos.reduce((acc, todo, index) => {
-    const chunkIndex = Math.floor(index / 10);
+    const chunkIndex = Math.floor(index / 6);
     if (!acc[chunkIndex]) {
       acc[chunkIndex] = [];
     }

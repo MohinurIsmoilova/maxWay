@@ -51,17 +51,6 @@ export const NavbarMenyu = () => {
     ],
   };
 
-// const handleMenuItemClick = (index, name) => {
-//   setActiveMenuItem(index);
-//   sliderRef.current.slickGoTo(index);
-//   const h2Tags = document.querySelectorAll("h2");
-//   h2Tags.forEach((tag, idx) => {
-//     if (tag.textContent === name) {
-//       tag.scrollIntoView({ behavior: "smooth" });
-//     }
-//   });
-// };
-
 
 const handleMenuItemClick = (index, name) => {
   setActiveMenuItem(index);
@@ -76,14 +65,20 @@ const handleMenuItemClick = (index, name) => {
 };
 
 // const handleMenuItemClick = (index, name) => {
-//   setActiveMenuItem(index);
-//   sliderRef.current.slickGoTo(index);
-//   const h2Tags = document.querySelectorAll("h2");
-//   h2Tags.forEach((tag, idx) => {
-//     if (tag.textContent.trim() === name.trim()) {
-//       tag.scrollIntoView({ behavior: "smooth" });
-//     }
-//   });
+//   setActiveMenuItem(index); // Set active menu item
+//   sliderRef.current.slickGoTo(index); // Go to the corresponding slide
+
+//   // Debugging statement
+//   console.log("Clicked name:", name);
+
+//   // Find the h2 tag with the matching text content and scroll to it
+//   const targetSection = document.querySelector(`h2:contains(${name})`);
+//   console.log("Target section:", targetSection);
+//   if (targetSection) {
+//     targetSection.scrollIntoView({ behavior: "smooth" });
+//   } else {
+//     console.log("Section not found.");
+//   }
 // };
 
   const goToNext = () => {
@@ -122,7 +117,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 1 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(1, "Klab Sendvich")} // Pass the name "Klab Sendvich"
+              onClick={() => handleMenuItemClick(1, "Klab-Sendvich")} // Pass the name "Klab Sendvich"
             >
               Klab Sendvich
             </button>
@@ -140,7 +135,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 3 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(3)}
+              onClick={() => handleMenuItemClick(3, "Shaurma")}
             >
               <NavLink>Shaurma</NavLink>
             </button>
@@ -149,7 +144,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 4 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(4)}
+              onClick={() => handleMenuItemClick(4, "Panini")}
             >
               <NavLink>Panini</NavLink>
             </button>
@@ -158,7 +153,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 5 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(5)}
+              onClick={() => handleMenuItemClick(5, "Burger")}
             >
               <NavLink>Burger</NavLink>
             </button>
@@ -167,7 +162,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 6 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(6)}
+              onClick={() => handleMenuItemClick(6, "Donar Kebab")}
             >
               <NavLink>Donar Kebab</NavLink>
             </button>
@@ -176,7 +171,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 7 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(7)}
+              onClick={() => handleMenuItemClick(7, "Hot-Dog")}
             >
               <NavLink>Hot Dog</NavLink>
             </button>
@@ -185,7 +180,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 8 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(8)}
+              onClick={() => handleMenuItemClick(8, "Gazaklar")}
             >
               <NavLink>Gazaklar</NavLink>
             </button>
@@ -194,7 +189,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 9 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(9)}
+              onClick={() => handleMenuItemClick(9, "Tamaddilar")}
             >
               <NavLink>Tamaddilar</NavLink>
             </button>
@@ -203,7 +198,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 10 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(10)}
+              onClick={() => handleMenuItemClick(10, "Desertlar")}
             >
               <NavLink>Desertlar</NavLink>
             </button>
@@ -212,7 +207,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 11 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(11)}
+              onClick={() => handleMenuItemClick(11, "Souslar")}
             >
               <NavLink>Souslar</NavLink>
             </button>
@@ -221,7 +216,7 @@ const handleMenuItemClick = (index, name) => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 12 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(12)}
+              onClick={() => handleMenuItemClick(12, "Tamaddilar")}
             >
               <NavLink>Tamaddilar</NavLink>
             </button>
@@ -241,7 +236,6 @@ const handleMenuItemClick = (index, name) => {
         </div>
       </div>
       <FirstFood activeMenuItem={activeMenuItem} />
-      {/* <div>{counter === 1 && }</div> */}
     </>
   );
 };
