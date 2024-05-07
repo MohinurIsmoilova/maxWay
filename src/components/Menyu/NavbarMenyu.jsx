@@ -51,18 +51,40 @@ export const NavbarMenyu = () => {
     ],
   };
 
+// const handleMenuItemClick = (index, name) => {
+//   setActiveMenuItem(index);
+//   sliderRef.current.slickGoTo(index);
+//   const h2Tags = document.querySelectorAll("h2");
+//   h2Tags.forEach((tag, idx) => {
+//     if (tag.textContent === name) {
+//       tag.scrollIntoView({ behavior: "smooth" });
+//     }
+//   });
+// };
 
-     const handleMenuItemClick = (index, name) => {
-       setActiveMenuItem(index);
-       sliderRef.current.slickGoTo(index);
-       const h2Tags = document.querySelectorAll("h2");
-       h2Tags.forEach((tag, idx) => {
-         if (tag.textContent === name) {
-           tag.scrollIntoView({ behavior: "smooth" });
-         }
-       });
-     };
 
+const handleMenuItemClick = (index, name) => {
+  setActiveMenuItem(index);
+  sliderRef.current.slickGoTo(index);
+  const h2Tags = document.querySelectorAll("h2");
+  h2Tags.forEach((tag, idx) => {
+    console.log("Found h2 tag with text content:", tag.textContent.trim());
+    if (tag.textContent.trim() === name.trim()) {
+      tag.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+};
+
+// const handleMenuItemClick = (index, name) => {
+//   setActiveMenuItem(index);
+//   sliderRef.current.slickGoTo(index);
+//   const h2Tags = document.querySelectorAll("h2");
+//   h2Tags.forEach((tag, idx) => {
+//     if (tag.textContent.trim() === name.trim()) {
+//       tag.scrollIntoView({ behavior: "smooth" });
+//     }
+//   });
+// };
 
   const goToNext = () => {
     sliderRef.current.slickNext();
@@ -85,14 +107,14 @@ export const NavbarMenyu = () => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 0 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(0)}
+              onClick={() => handleMenuItemClick(0, "Maxi BOX")}
             >
               <div className="flex">
                 <div className="flex space-x-1">
                   <RestaurantOutlinedIcon className="text-red-500 top-[2px] relative p-[2px]" />
                   <RamenDiningOutlinedIcon className="text-orange-500 top-[2px] relative p-[2px]" />
                 </div>
-                <NavLink>Maxi BOX</NavLink>
+                Maxi BOX
               </div>
             </button>
 
@@ -100,7 +122,7 @@ export const NavbarMenyu = () => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 1 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(1)}
+              onClick={() => handleMenuItemClick(1, "Klab Sendvich")} // Pass the name "Klab Sendvich"
             >
               Klab Sendvich
             </button>
@@ -109,7 +131,7 @@ export const NavbarMenyu = () => {
               className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
                 activeMenuItem === 2 && "text-purple-900 bg-purple-200" // Highlight active item
               }`}
-              onClick={() => handleMenuItemClick(2)}
+              onClick={() => handleMenuItemClick(2, "Lavash")}
             >
               Lavash
             </button>
