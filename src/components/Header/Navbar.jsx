@@ -11,7 +11,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import {ModalPage} from "./ModalPage";
+import { ModalPage } from "./ModalPage";
+import { addToCart, updateTotalPrice } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -26,7 +28,9 @@ const style = {
 };
 
 export const Navbar = () => {
+
   //modal
+  // const totalPrice = useSelector((state) => state.totalPrice);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -61,6 +65,16 @@ export const Navbar = () => {
       </div>
     );
   };
+
+   const dispatch = useDispatch();
+   const totalPrice = useSelector((state) => state.cart.totalPrice);
+   console.log(totalPrice);
+
+   const handleAddToCart = (item) => {
+     dispatch(addToCart(item));
+     dispatch(updateTotalPrice()); // Dispatch updateTotalPrice action after adding to cart
+     alert("Successfully added to cart!");
+   };
 
   return (
     <>
@@ -140,7 +154,7 @@ export const Navbar = () => {
                 <CloseIcon className="text-black" />
               </div>
             </Button>
-            <ModalPage/>
+            <ModalPage />
           </Box>
         </Modal>
 
@@ -177,10 +191,13 @@ export const Navbar = () => {
         </div>
 
         <div className="flex space-x-2 mt-2">
-          <NavLink className="w-[35px] h-[35px] bg-purple-100 rounded-[50%]">
-            <ShoppingCartIcon className="text-purple-900 ml-[6px] mt-[5px] p-[2px]" />
+          <NavLink to="/cart" className="flex space-x-2">
+            <div className="w-[50px] h-[35px] bg-purple-100 rounded-[50%]">
+              <ShoppingCartIcon className="text-purple-900 ml-[5px] mt-[5px] p-[2px]" />
+            </div>
+            <p className="mt-[5px] w-full">{totalPrice} so'm</p>
           </NavLink>
-          <p className="mt-[5px]">40 000 so'm</p>
+
           <NavLink className="w-[32px] h-[32px] bg-purple-100 rounded-[50%]">
             <PersonIcon className="text-purple-900 ml-[4px] mt-[5px] p-[1px]" />
           </NavLink>

@@ -6,11 +6,6 @@ export const Foods = () => {
       <div>
         <h1>Aksiya 2+1</h1>
         <div>
-
-
-
-
-
           <div className="w-[60px]">
             <img
               src="https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F527ee2ca-fce2-441c-bc1e-e8af10d46ebb&w=1920&q=75"
@@ -28,12 +23,6 @@ export const Foods = () => {
               </button>
             </div>
           </div>
-
-
-
-
-
-
         </div>
       </div>
     </>

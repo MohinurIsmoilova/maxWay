@@ -1,21 +1,32 @@
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import { Menyu, Filallar, BizHaqimizda, Boglanish } from "./pages/HeaderSide/index";
+import { Provider } from "react-redux";
+import store from "./store";
+import {
+  Menyu,
+  Filallar,
+  BizHaqimizda,
+  Boglanish,
+  Korzina,
+} from "./pages/HeaderSide/index";
+import { Layout } from "./layout/Layout";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <Header />
-        <Routes>
-          <Route path="/">
-            <Route index element={<Menyu />} />
-            <Route path="filial" element={<Filallar/>} />
-            <Route path="about" element={<BizHaqimizda/>}/>
-            <Route path="connect" element={<Boglanish/>}/>
-          </Route>
-        </Routes>
-      </div>
+      <Provider store={store}>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Layout/>}>
+              <Route index element={<Menyu />} />
+              <Route path="filial" element={<Filallar />} />
+              <Route path="about" element={<BizHaqimizda />} />
+              <Route path="connect" element={<Boglanish />} />
+              <Route path="cart" element={<Korzina />} />
+            </Route>
+            <Route path="*" element={<h1>hello</h1>} />
+          </Routes>
+        </div>
+      </Provider>
     </>
   );
 }
@@ -37,4 +48,3 @@ export default App;
 // }
 
 // export default App;
-

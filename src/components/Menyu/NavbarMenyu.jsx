@@ -46,7 +46,7 @@ export const NavbarMenyu = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-index bg-white mt-6">
+      <div className="sticky top-0 z-index bg-white">
         <div className="items-center justify-between pt-10">
           <Slider
             {...settings}

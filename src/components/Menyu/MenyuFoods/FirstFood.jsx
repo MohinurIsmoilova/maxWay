@@ -1,202 +1,252 @@
 import React, { useEffect, useState } from "react";
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import RamenDiningOutlinedIcon from "@mui/icons-material/RamenDiningOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-// Modal component to display card information
-const Modal = ({ isOpen, onClose, card }) => {
-const [isChecked, setIsChecked] = useState(false);
-const [isChecked1, setIsChecked1] = useState(false);
-const [isChecked2, setIsChecked2] = useState(false);
-const [count, setCount]=useState("")
+import { Modal } from "./Modal";
 
-const toggleInputGroup = () => {
-  setIsChecked(!isChecked);
-  setIsChecked1(false);
-  setIsChecked2(false);
-};
+// const Modal = ({ isOpen, onClose, card}) => {
+//   console.log(card);
+//    const dispatch = useDispatch();
 
-const toggleInputGroup1 = () => {
-  setIsChecked(false);
-  setIsChecked1(!isChecked1);
-  setIsChecked2(false);
-};
+//   const handleAddToCart = (item) => {
+//     dispatch(addToCart(item));
+//     onClose(); // Close the modal after adding to cart
+//   };
+//   const todos = useSelector((state) => state.todos);
+//   const [selectedCard, setSelectedCard] = useState(null);
+//   const [isModalOpen, setIsModalOpen] = useState(false);
 
-const toggleInputGroup2 = () => {
-  setIsChecked(false);
-  setIsChecked1(false);
-  setIsChecked2(!isChecked2);
-};
+//     const openModal = (card) => {
+//       setSelectedCard(card);
+//       setIsModalOpen(true);
+//     };
 
-  const handleCloseModal = () => {
-    onClose();
-  };
+//     const closeModal = () => {
+//       setIsModalOpen(false);
+//     };
 
-  if (!isOpen) return null;
+//   const [isChecked, setIsChecked] = useState(false);
+//   const [isChecked1, setIsChecked1] = useState(false);
+//   const [isChecked2, setIsChecked2] = useState(false);
+//   const [count, setCount] = useState(1); // Initialize count to 1
 
-  return (
-    <div
-      className="fixed inset-0 flex items-center justify-center z-10 bg-gray-800 bg-opacity-50"
-      onClick={handleCloseModal}
-    >
-      <div
-        className="bg-white rounded-lg w-[750px] h-[530px] flex flex-col relative"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <CloseOutlinedIcon
-          className="absolute top-4 right-4 cursor-pointer"
-          onClick={onClose}
-        />
+//   const toggleInputGroup = () => {
+//     setIsChecked(!isChecked);
+//     setIsChecked1(false);
+//     setIsChecked2(false);
+//   };
 
-        <div className="flex">
-          <div className="flex mt-32 w-[320px]">
-            <img
-              src={card.productImage}
-              alt="img"
-              className="h-60 object-cover mb-4"
-            />
-          </div>
+//   const toggleInputGroup1 = () => {
+//     setIsChecked(false);
+//     setIsChecked1(!isChecked1);
+//     setIsChecked2(false);
+//   };
 
-          <div className="flex flex-col ml-10 mt-9">
-            <h1 className="font-semibold text-2xl mb-2">{card.productName}</h1>
-            <p className="text-[17px] text-gray-500 mt-2 mb-4 w-[92%]">
-              {card.productTitle}
-            </p>
+//   const toggleInputGroup2 = () => {
+//     setIsChecked(false);
+//     setIsChecked1(false);
+//     setIsChecked2(!isChecked2);
+//   };
 
-            {/* 1 st div */}
+//   const incrementCount = () => {
+//     setCount(count + 1);
+//   };
 
-            <div className="w-[360px] h-[84px] mt-2 rounded-xl border-2 p-3">
-              <h2 className="font-normal text-gray-600">kartoshka-fri</h2>
+//   const decrementCount = () => {
+//     if (count > 1) {
+//       setCount(count - 1);
+//     }
+//   };
 
-              <div className="flex space-x-3 mt-2">
-                <input type="checkbox" className="text-purple-900" />
+//   const handleCloseModal = () => {
+//     onClose();
+//   };
 
-                <p className="text-gray-600 text-[14px]">
-                  kichik kartoshka-fri
-                </p>
+//   useEffect(() => {
+//     // Reset count when the modal is closed
+//     if (!isOpen) {
+//       setCount(1);
+//     }
+//   }, [isOpen]);
 
-                <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
-                  <button>-</button>
-                  <p className="text-[13px] mt-[2px]">1</p>
-                  <button>+</button>
-                </div>
+//   if (!isOpen) return null;
+//   const totalPrice = count * card.productPrice;
 
-                <h2 className="text-gray-500 text-[14px] mt-[1px] relative left-[75px]">
-                  + 0 so'm
-                </h2>
-              </div>
-            </div>
+//   return (
+//     <div
+//       className="fixed inset-0 flex items-center justify-center z-10 bg-gray-800 bg-opacity-50"
+//       onClick={handleCloseModal}
+//     >
+//       <div
+//         className="bg-white rounded-lg w-[750px] h-[530px] flex flex-col relative"
+//         onClick={(e) => e.stopPropagation()}
+//       >
+//         <CloseOutlinedIcon
+//           className="absolute top-4 right-4 cursor-pointer"
+//           onClick={onClose}
+//         />
 
-            {/* 1 st div */}
+//         <div className="flex">
+//           <div className="flex mt-32 w-[320px]">
+//             <img
+//               src={card.productImage}
+//               alt="img"
+//               className="h-60 object-cover mb-4"
+//             />
+//           </div>
 
-            {/* 2nd div */}
+//           <div className="flex flex-col ml-10 mt-9">
+//             <h1 className="font-semibold text-2xl mb-2">{card.productName}</h1>
+//             <p className="text-[17px] text-gray-500 mt-2 mb-4 w-[92%]">
+//               {card.productTitle}
+//             </p>
 
-            <div className="w-[360px] h-[164px] mt-2 rounded-xl border-2 p-3">
-              <h2 className="font-semibold text-gray-600">siz tanlagan sous</h2>
-              {/*  */}
-              <div className="flex space-x-3 mt-2">
-                <input
-                  type="checkbox"
-                  className="text-purple-900"
-                  onChange={toggleInputGroup}
-                  checked={isChecked}
-                />
+//             {/* 1 st div */}
 
-                <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
+//             <div className="w-[360px] h-[84px] mt-2 rounded-xl border-2 p-3">
+//               <h2 className="font-normal text-gray-600">kartoshka-fri</h2>
 
-                {isChecked && (
-                  <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
-                    <button>-</button>
-                    <p className="text-[13px] mt-[2px]">1</p>
-                    <button>+</button>
-                  </div>
-                )}
+//               <div className="flex space-x-3 mt-2">
+//                 <input type="checkbox" className="text-purple-900" />
 
-                <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
-                  + 0 so'm
-                </h2>
-              </div>
-              {/*  */}
+//                 <p className="text-gray-600 text-[14px]">
+//                   kichik kartoshka-fri
+//                 </p>
 
-              <div className="flex space-x-3 mt-2">
-                <input
-                  type="checkbox"
-                  className="text-purple-900"
-                  onChange={toggleInputGroup1}
-                  checked={isChecked1}
-                />
+//                 <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
+//                   <button>-</button>
+//                   <p className="text-[13px] mt-[2px]">{count}</p>
+//                   <button>+</button>
+//                 </div>
 
-                <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
+//                 <h2 className="text-gray-500 text-[14px] mt-[1px] relative left-[75px]">
+//                   + 0 so'm
+//                 </h2>
+//               </div>
+//             </div>
 
-                {isChecked1 && (
-                  <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
-                    <button>-</button>
-                    <p className="text-[13px] mt-[2px]">1</p>
-                    <button>+</button>
-                  </div>
-                )}
+//             {/* 1 st div */}
 
-                <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
-                  + 0 so'm
-                </h2>
-              </div>
+//             {/* 2nd div */}
 
-              {/*  */}
-              <div className="flex space-x-3 mt-2">
-                <input
-                  type="checkbox"
-                  className="text-purple-900"
-                  onChange={toggleInputGroup2}
-                  checked={isChecked2}
-                />
+//             <div className="w-[360px] h-[164px] mt-2 rounded-xl border-2 p-3">
+//               <h2 className="font-semibold text-gray-600">siz tanlagan sous</h2>
+//               {/*  */}
+//               <div className="flex space-x-3 mt-2">
+//                 <input
+//                   type="checkbox"
+//                   className="text-purple-900"
+//                   onChange={toggleInputGroup}
+//                   checked={isChecked}
+//                 />
 
-                <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
+//                 <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
 
-                {isChecked2 && (
-                  <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
-                    <button>-</button>
-                    <p className="text-[13px] mt-[2px]">1</p>
-                    <button>+</button>
-                  </div>
-                )}
+//                 {isChecked && (
+//                   <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
+//                     <button>-</button>
+//                     <p className="text-[13px] mt-[2px]">{count}</p>
+//                     <button>+</button>
+//                   </div>
+//                 )}
 
-                <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
-                  + 0 so'm
-                </h2>
-              </div>
+//                 <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
+//                   + 0 so'm
+//                 </h2>
+//               </div>
+//               {/*  */}
 
-              {/*  */}
-            </div>
+//               <div className="flex space-x-3 mt-2">
+//                 <input
+//                   type="checkbox"
+//                   className="text-purple-900"
+//                   onChange={toggleInputGroup1}
+//                   checked={isChecked1}
+//                 />
 
-            {/* 2nd div */}
+//                 <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
 
-            <div className="w-[340px] h-[1px] mt-6 ml-2 bg-gray-200"></div>
+//                 {isChecked1 && (
+//                   <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
+//                     <button>-</button>
+//                     <p className="text-[13px] mt-[2px]">{count}</p>
+//                     <button>+</button>
+//                   </div>
+//                 )}
 
-            {/* buttons */}
+//                 <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
+//                   + 0 so'm
+//                 </h2>
+//               </div>
 
-            <div className="mt-4 flex space-x-24">
-              <div className="w-[140px] h-[43px] flex space-x-9 p-2 border-[1px] border-purple-800 rounded-3xl">
-                <button className="text-3xl ml-4 relative bottom-2">-</button>
-                <h2 className="text-xl relative right-2">1</h2>
-                <button className="text-3xl right-6 relative bottom-[7px]">
-                  +
-                </button>
-              </div>
+//               {/*  */}
+//               <div className="flex space-x-3 mt-2">
+//                 <input
+//                   type="checkbox"
+//                   className="text-purple-900"
+//                   onChange={toggleInputGroup2}
+//                   checked={isChecked2}
+//                 />
 
-              <button className="w-[130px] h-[43px] bg-purple-800 text-white rounded-3xl font-semibold">
-                42 000 so'm
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//                 <p className="text-gray-600 text-[14px]">sarimsoqli sous</p>
+
+//                 {isChecked2 && (
+//                   <div className="font-semibold text-gray-600 flex space-x-2 relative bottom-[2px] left-4">
+//                     <button>-</button>
+//                     <p className="text-[13px] mt-[2px]">{count}</p>
+//                     <button>+</button>
+//                   </div>
+//                 )}
+
+//                 <h2 className="text-gray-500 text-[14px] mt-[1px] absolute right-[112px]">
+//                   + 0 so'm
+//                 </h2>
+//               </div>
+
+//               {/*  */}
+//             </div>
+
+//             {/* 2nd div */}
+
+//             <div className="w-[340px] h-[1px] mt-6 ml-2 bg-gray-200"></div>
+
+//             {/* buttons */}
+
+//             <div className="mt-4 flex space-x-24">
+//               <div className="w-[140px] h-[43px] flex space-x-9 p-2 border-[1px] border-purple-800 rounded-3xl">
+//                 <button
+//                   className="text-3xl ml-4 relative bottom-2"
+//                   onClick={decrementCount}
+//                 >
+//                   -
+//                 </button>
+//                 <h2 className="text-xl relative right-2">{count}</h2>
+//                 <button
+//                   className="text-3xl right-6 relative bottom-[7px]"
+//                   onClick={incrementCount}
+//                 >
+//                   +
+//                 </button>
+//               </div>
+
+//               <button
+//                 className="w-[130px] h-[43px] bg-purple-800 text-white rounded-3xl font-semibold"
+//                 onClick={() => handleAddToCart(card)}
+//               >
+//                 {totalPrice} so'm
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 export const FirstFood = () => {
   const [todos, setTodos] = useState([]);
-  console.log(todos);
+
+  // console.log(todos);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

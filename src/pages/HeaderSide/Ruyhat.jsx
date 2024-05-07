@@ -149,7 +149,7 @@ export const Ruyhat = () => {
                 </div>
                 <div className="ml-auto relative right-52 md:left-0">
                   <p
-                    className={`md:w-full w-[80%] relative text-right
+                    className={`md:w-full w-[80%] relative text-right ml-7 md:right-8
                       ${director.open === "10:00 gacha yopiq"
                         ? "text-red-500"
                         : "text-green-500"
