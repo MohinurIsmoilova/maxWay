@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -30,13 +30,11 @@ const style = {
 };
 
 export const Navbar = () => {
-  //modal
-  // const totalPrice = useSelector((state) => state.totalPrice);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  //modal end
-
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isButtonColored, setIsButtonColored] = useState(false);
   const [language, setLanguage] = useState(10);
 
   const handleChange = (event) => {
@@ -73,39 +71,55 @@ export const Navbar = () => {
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
-    dispatch(updateTotalPrice()); // Dispatch updateTotalPrice action after adding to cart
+    dispatch(updateTotalPrice());
     alert("Successfully added to cart!");
   };
 
-   const [anchorEl, setAnchorEl] = React.useState(null);
-   const open11 = Boolean(anchorEl);
-   const handleClick = (event) => {
-     setAnchorEl(event.currentTarget);
-   };
-   const handleClose11 = () => {
-     setAnchorEl(null);
-   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open11 = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose11 = () => {
+    setAnchorEl(null);
+  };
 
+  const [open1, setOpen1] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
+  const handleOpen1 = () => setOpen1(true);
 
-       const [open1, setOpen1] = useState(false);
-       const [phoneNumber, setPhoneNumber] = useState("");
-       const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  useEffect(() => {
+    setPhoneNumber("+998");
+  }, []);
 
-       const handleOpen1 = () => setOpen1(true);
-       const handleClose1 = () => setOpen1(false);
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
 
-       const handlePhoneNumberChange = (event) => {
-         const { value } = event.target;
-         setPhoneNumber(value);
-         setIsButtonDisabled(value === "");
-       };
+  const isValidPhoneNumber = (phoneNumber) => {
+    return /^(\+998|998)?[0-9]{9}$/.test(phoneNumber);
+  };
 
-       const handleButtonClick = () => {
-         // Perform any action with the phone number here
-         console.log("Phone number:", phoneNumber);
-         handleClose(); // Close the modal after button click
-       };
+  const generateSMSCode = () => {
+    const codeLength = Math.random() < 0.5 ? 4 : 5;
+    const smsCode =
+      Math.floor(Math.random() * (9 * Math.pow(10, codeLength - 1))) +
+      Math.pow(10, codeLength - 1);
+
+    console.log(`Sending SMS code "${smsCode}" to ${phoneNumber}`);
+  };
+
+  const handlePhoneNumberChange = (event) => {
+    const { value } = event.target;
+    setPhoneNumber(value);
+    setIsButtonDisabled(value === "");
+  };
+
+  const handleButtonClick = () => {
+    console.log("Sending SMS with code to", phoneNumber);
+  };
+
   return (
     <>
       <div className="flex justify-between mt-4">
@@ -325,7 +339,7 @@ export const Navbar = () => {
                 </p>
               </div>
               <div className="relative bottom-10 p-4">
-                <label className=" text-gray-900 font-normal mt-2">
+                <label className="text-gray-900 font-normal mt-2">
                   Telefon raqam
                 </label>
                 <input
@@ -337,7 +351,11 @@ export const Navbar = () => {
                 <button
                   disabled={isButtonDisabled}
                   onClick={handleButtonClick}
-                  className="w-full bg-gray-300 h-[42px] text-gray-500 font-normal text-[15px] py-2 px-4 rounded-3xl mt-4"
+                  className={`w-full h-[42px] text-white font-semibold text-[15px] py-2 px-4 rounded-3xl mt-4 ${
+                    isButtonDisabled
+                      ? "bg-gray-300"
+                      : "bg-purple-900 hover:bg-purple-800"
+                  }`}
                 >
                   Kodni yuborish
                 </button>
