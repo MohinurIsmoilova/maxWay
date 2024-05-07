@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateTotalPrice } from "../../actions";
 
 export const Korzina = () => {
   const [count, setCount] = useState(1);
-    const dispatch = useDispatch();
-    const cartItems = useSelector((state) => state.cart.cartItems);
-    const totalPrice = useSelector((state) => state.cart.totalPrice + 2000); 
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalPrice = useSelector((state) => state.cart.totalPrice + 2000);
+  const minimumOrderPrice = 4000;
 
-    useEffect(() => {
-      dispatch(updateTotalPrice());
-    }, [dispatch, cartItems]);
+  const handleCheckout = () => {
+    // Your checkout logic here
+  };
+
+  useEffect(() => {
+    dispatch(updateTotalPrice());
+  }, [dispatch, cartItems]);
 
   return (
     <div className="mt-8">
@@ -99,14 +104,14 @@ export const Korzina = () => {
 
           <div className="flex items-start justify-between mt-3">
             <h2 className="text-xl text-gray-800">Mahsulotlar</h2>
-            <p className="text-xl text-gray-800">so'm</p>
+            <p className="text-xl text-gray-800">{totalPrice} so'm</p>
           </div>
           <div className="flex items-start justify-between mt-3">
             <h2 className="text-xl text-gray-800">Yetkazib berish</h2>
-            <p className="text-xl text-gray-800">{totalPrice} so'm</p>
+            <p className="text-xl text-gray-800">0 so'm</p>
           </div>
 
-          <div className="w-[330px] mt-4 h-[1px] bg-slate-400"></div>
+          {/* <div className="w-[330px] mt-4 h-[1px] bg-slate-400"></div>
           <div className="flex items-start justify-between mt-3">
             <h2 className="text-xl text-gray-800">To'lash uchun</h2>
             <p className="text-xl text-gray-800">{totalPrice} so'm</p>
@@ -117,7 +122,40 @@ export const Korzina = () => {
           </button>
           <p className="text-red-600 text-[13px] ml-5 mt-1">
             Eng kam buyurtma narxi 40 000 so'm bo'lishi kerak
-          </p>
+          </p> */}
+
+          {totalPrice >= minimumOrderPrice ? (
+            <React.Fragment>
+              <div className="w-[330px] mt-4 h-[1px] bg-slate-400"></div>
+              <div className="flex items-start justify-between mt-3">
+                <h2 className="text-xl text-gray-800">To'lash uchun</h2>
+                <p className="text-xl text-gray-800">{totalPrice} so'm</p>
+              </div>
+              <button
+                className="w-[330px] h-[50px] rounded-3xl mt-4 font-semibold bg-purple-700 text-white"
+                onClick={handleCheckout}
+              >
+                To'lov sahifasiga o'tish
+              </button>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <div className="w-[330px] mt-4 h-[1px] bg-slate-400"></div>
+              <div className="flex items-start justify-between mt-3">
+                <h2 className="text-xl text-gray-800">To'lash uchun</h2>
+                <p className="text-xl text-gray-800">{totalPrice} so'm</p>
+              </div>
+              <button
+                className="w-[330px] h-[50px] rounded-3xl mt-4 font-semibold bg-slate-300 text-slate-400"
+                disabled
+              >
+                To'lov sahifasiga o'tish
+              </button>
+              <p className="text-red-600 text-[13px] ml-5 mt-1">
+                Eng kam buyurtma narxi 40 000 so'm bo'lishi kerak
+              </p>
+            </React.Fragment>
+          )}
         </div>
       </div>
     </div>
