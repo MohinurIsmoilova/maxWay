@@ -3,9 +3,7 @@ import { NavLink } from "react-router-dom";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -34,8 +32,8 @@ export const Navbar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [isButtonColored, setIsButtonColored] = useState(false);
   const [language, setLanguage] = useState(10);
+  const [generatedCode, setGeneratedCode] = useState("");
 
   const handleChange = (event) => {
     setLanguage(event.target.value);
@@ -86,7 +84,6 @@ export const Navbar = () => {
 
   const [open1, setOpen1] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-
   const handleOpen1 = () => setOpen1(true);
 
   useEffect(() => {
@@ -110,15 +107,59 @@ export const Navbar = () => {
     console.log(`Sending SMS code "${smsCode}" to ${phoneNumber}`);
   };
 
-  const handlePhoneNumberChange = (event) => {
-    const { value } = event.target;
-    setPhoneNumber(value);
-    setIsButtonDisabled(value === "");
+  const sendCodeViaSMS = (phoneNumber, code) => {
+    console.log(`Sending code ${code} via SMS to ${phoneNumber}`);
+
+    const success = true;
+    if (success) {
+      console.log(`Code ${code} sent successfully to ${phoneNumber}`);
+    } else {
+      console.error(`Failed to send code ${code} to ${phoneNumber}`);
+    }
   };
 
-  const handleButtonClick = () => {
-    console.log("Sending SMS with code to", phoneNumber);
-  };
+    const [open2, setOpen2] = useState(false); // State for the second modal
+    const [smsCode, setSmsCode] = useState("");
+
+    const handleClose2 = () => {
+      setOpen2(false);
+    };
+
+    const handlePhoneNumberChange = (event) => {
+      let inputNumber = event.target.value;
+      const numericPart = inputNumber.substring(4).replace(/\D/g, "");
+      inputNumber = "+998" + numericPart;
+      if (inputNumber.length <= 13) {
+        setPhoneNumber(inputNumber);
+        setIsButtonDisabled(numericPart.length !== 9);
+      }
+    };
+
+    const handleButtonClick = () => {
+      const code = Math.floor(10000 + Math.random() * 90000); // Generates a random 5-digit number
+      setGeneratedCode(code);
+      setOpen2(true);
+    };
+
+    const [isCodeCorrect, setIsCodeCorrect] = useState(false); // State to track if the entered code is correct
+
+    const handleSmsCodeChange = (event) => {
+      const enteredCode = event.target.value;
+      setSmsCode(enteredCode);
+
+      // Check if the entered code matches the generated code
+      setIsCodeCorrect(enteredCode === generatedCode.toString());
+    };
+
+    // Button click handler
+    const handleConfirmButtonClick = () => {
+      if (isCodeCorrect) {
+        console.log("SMS code is correct");
+      } else {
+        console.log("SMS code is incorrect");
+      }
+      setOpen2(false);
+    };
 
   return (
     <>
@@ -359,6 +400,71 @@ export const Navbar = () => {
                 >
                   Kodni yuborish
                 </button>
+              </div>
+            </div>
+          </Modal>
+
+          {/* Second Modal */}
+          <Modal
+            open={open2}
+            onClose={handleClose2}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className="p-4 bg-white w-[440px] h-[536px] m-auto mt-16 rounded-2xl">
+          
+              <Button onClick={handleClose2}>
+                <div className="relative left-[364px] pt-4">
+                  <CloseIcon className="text-black" />
+                </div>
+              </Button>
+              <div className="p-8 relative bottom-7">
+                <h4
+                  id="modal-modal-title"
+                  className="text-[33px] text-gray-800 font-bold text-center"
+                >
+                  Tizimga kirish
+                </h4>
+                <p className="text-center text-xl text-gray-500 font-normal mt-2">
+                  Telefon raqamingiz bilan tizimga kiring
+                </p>
+              </div>
+              <div className="relative bottom-10 p-4">
+                <label className="text-gray-800 font-normal">
+                  Telefon raqam
+                </label>
+                {/* Display the phoneNumber from the first modal */}
+                <input
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                  className="w-full border rounded-xl p-2 mt-4"
+                />
+                <div className="relative top-4">
+                  <label className="text-gray-800 font-normal">
+                    Tasdiqlash kodi
+                  </label>
+                  <input
+                    type="text"
+                    value={smsCode}
+                    onChange={handleSmsCodeChange}
+                    className="w-full border rounded-xl p-2 mt-4"
+                  />
+                  <p className="text-center text-[16px] text-purple-800 font-normal mt-9">
+                    Qayta yuborish
+                  </p>
+                  <button
+                    disabled={!isCodeCorrect || smsCode.length !== 5} // Disable button if code is not correct or is not 5 characters long
+                    onClick={handleConfirmButtonClick}
+                    className={`w-full h-[42px] text-gray-500 font-semibold text-[15px] py-2 px-4 rounded-3xl mt-8 ${
+                      !isCodeCorrect || smsCode.length !== 5
+                        ? "bg-gray-300"
+                        : "bg-purple-900 hover:bg-purple-800 text-white"
+                    }`}
+                  >
+                    Tasdiqlash
+                  </button>
+                </div>
               </div>
             </div>
           </Modal>

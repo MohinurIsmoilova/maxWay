@@ -8,6 +8,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "22:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "22:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "04:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "23:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 6,
@@ -58,6 +63,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 7,
@@ -68,6 +74,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 8,
@@ -78,6 +85,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "22:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 9,
@@ -88,6 +96,8 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "22:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
+
   },
   {
     id: 10,
@@ -99,6 +109,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 11,
@@ -109,6 +120,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "23:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 12,
@@ -119,6 +131,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "01:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 13,
@@ -129,6 +142,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "22:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 14,
@@ -139,6 +153,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "04:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 15,
@@ -149,6 +164,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 16,
@@ -159,6 +175,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 17,
@@ -169,6 +186,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "01:00",
     number: "+998712005400",
+    openTime:"Restoran soat 10:00 da ochiladi",
   },
   {
     id: 18,
@@ -180,6 +198,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 19,
@@ -190,6 +209,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
   {
     id: 20,
@@ -200,6 +220,7 @@ const ruyhat = [
     amOclock: "10:00",
     pmOclock: "03:00",
     number: "+998712005400",
+    openTime:"open_until"
   },
 ];
 

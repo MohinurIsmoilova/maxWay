@@ -52,7 +52,7 @@ export const SendProduct = () => {
           type="text"
           value={searchQuery}
           onChange={handleInputChange}
-          className="mt-1 relative right-6 top-5 w-[555px] h-[50px] shadow-sm sm:text-sm border-[1px] rounded-lg p-4"
+          className="mt-1 relative right-2 top-5 w-[590px] h-[50px] shadow-sm sm:text-sm border-[1px] rounded-lg p-4"
           placeholder="Yetkazib berish manzili"
         />
         {searchQuery && (
