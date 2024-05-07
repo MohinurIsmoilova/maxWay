@@ -5,69 +5,64 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import RamenDiningOutlinedIcon from "@mui/icons-material/RamenDiningOutlined";
-import { FifthFood, FirstFood, FourthFood, SecondFood, SixFood, ThirdFood } from "./MenyuFoods/index";
+import { FirstFood } from "./MenyuFoods/index";
 
 export const NavbarMenyu = () => {
   const sliderRef = useRef();
-  const [counter, setCounter] = useState(1);
+   const [activeMenuItem, setActiveMenuItem] = useState(0);
 
-  //   const items = [
-  //     "Aksiya 2+1",
-  //     "Maxi BOX",
-  //     "Klab Sendvich",
-  //     "Lavash",
-  //     "Shaurma",
-  //     "Panini",
-  //     "Burger",
-  //     "Donar Kebab",
-  //     "Hot Dog",
-  //     "Gazaklar",
-  //     "Tamaddilar",
-  //     "Desertlar",
-  //     "Ichimliklar",
-  //     "Souslar",
-  //   ];
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 7,
+        },
+      },
+      {
+        breakpoint: 1280, // defines screen size for xl screens
+        settings: {
+          slidesToShow: 6, // show 6 slides on screens <= 1280px
+        },
+      },
+      {
+        breakpoint: 1024, // defines screen size for lg screens
+        settings: {
+          slidesToShow: 1, // show 5 slides on screens <= 1024px
+        },
+      },
+      {
+        breakpoint: 768, // defines screen size for md screens
+        settings: {
+          slidesToShow: 1, // show 4 slides on screens <= 768px
+        },
+      },
+      {
+        breakpoint: 640, // defines screen size for sm screens
+        settings: {
+          slidesToShow: 1, // show 3 slides on screens <= 640px
+        },
+      },
+    ],
+  };
 
- const settings = {
-   dots: false,
-   infinite: true,
-   speed: 500,
-   slidesToShow: 7,
-   slidesToScroll: 1,
-   responsive: [
-     {
-       breakpoint: 1536, // defines screen size for 2xl screens
-       settings: {
-         slidesToShow: 7, // show 7 slides on screens <= 1536px
-       },
-     },
-     {
-       breakpoint: 1280, // defines screen size for xl screens
-       settings: {
-         slidesToShow: 6, // show 6 slides on screens <= 1280px
-       },
-     },
-     {
-       breakpoint: 1024, // defines screen size for lg screens
-       settings: {
-         slidesToShow: 1, // show 5 slides on screens <= 1024px
-       },
-     },
-     {
-       breakpoint: 768, // defines screen size for md screens
-       settings: {
-         slidesToShow: 1, // show 4 slides on screens <= 768px
-       },
-     },
-     {
-       breakpoint: 640, // defines screen size for sm screens
-       settings: {
-         slidesToShow: 1, // show 3 slides on screens <= 640px
-       },
-     },
-     // Add more breakpoints and settings as needed
-   ],
- };
+
+     const handleMenuItemClick = (index, name) => {
+       setActiveMenuItem(index);
+       sliderRef.current.slickGoTo(index);
+       const h2Tags = document.querySelectorAll("h2");
+       h2Tags.forEach((tag, idx) => {
+         if (tag.textContent === name) {
+           tag.scrollIntoView({ behavior: "smooth" });
+         }
+       });
+     };
+
 
   const goToNext = () => {
     sliderRef.current.slickNext();
@@ -86,113 +81,127 @@ export const NavbarMenyu = () => {
             ref={sliderRef}
             className="px-9 relative bottom-6"
           >
-            {/* 
-          {items.map((item, index) => (
-            <div key={index} className="relative left-7">
-              <NavLink to="/" className="text-black">
-                <button className="hover:bg-gray-200 hover:text-gray-800 transition duration-300 ease-in-out">
-                  {item}
-                </button>
-              </NavLink>
-            </div>
-          ))} */}
-
             <button
-              className="mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              onClick={() => setCounter(1)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 0 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(0)}
             >
               <div className="flex">
                 <div className="flex space-x-1">
                   <RestaurantOutlinedIcon className="text-red-500 top-[2px] relative p-[2px]" />
                   <RamenDiningOutlinedIcon className="text-orange-500 top-[2px] relative p-[2px]" />
                 </div>
-
-                <NavLink to="/">Maxi BOX</NavLink>
+                <NavLink>Maxi BOX</NavLink>
               </div>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(2)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 1 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(1)}
             >
-              <NavLink to="/">Klab Sendvich</NavLink>
+              Klab Sendvich
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(3)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 2 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(2)}
             >
-              <NavLink to="/">Lavash</NavLink>
+              Lavash
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(4)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 3 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(3)}
             >
-              <NavLink to="/">Shaurma</NavLink>
+              <NavLink>Shaurma</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(5)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 4 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(4)}
             >
-              <NavLink to="/">Panini</NavLink>
+              <NavLink>Panini</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 relative active:focus:bg-purple-200 right-4 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(6)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 5 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(5)}
             >
-              <NavLink to="/">Burger</NavLink>
+              <NavLink>Burger</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(7)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 6 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(6)}
             >
-              <NavLink to="/">Donar Kebab</NavLink>
+              <NavLink>Donar Kebab</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(8)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 7 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(7)}
             >
-              <NavLink to="/">Hot Dog</NavLink>
+              <NavLink>Hot Dog</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(9)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 8 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(8)}
             >
-              <NavLink to="/">Gazaklar</NavLink>
+              <NavLink>Gazaklar</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(10)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 9 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(9)}
             >
-              <NavLink to="/">Tamaddilar</NavLink>
+              <NavLink>Tamaddilar</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(11)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 10 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(10)}
             >
-              <NavLink to="/">Desertlar</NavLink>
+              <NavLink>Desertlar</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(12)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 11 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(11)}
             >
-              <NavLink to="/">Souslar</NavLink>
+              <NavLink>Souslar</NavLink>
             </button>
 
             <button
-              className="mx-3 p-3 hover:text-purple-900 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10"
-              // onClick={() => setCounter(13)}
+              className={`mx-3 p-3 hover:text-purple-900 relative right-2 font-semibold text-[18px] h-[6px] rounded-xl hover:bg-purple-200 pb-10 ${
+                activeMenuItem === 12 && "text-purple-900 bg-purple-200" // Highlight active item
+              }`}
+              onClick={() => handleMenuItemClick(12)}
             >
-              <NavLink to="/">Tamaddilar</NavLink>
+              <NavLink>Tamaddilar</NavLink>
             </button>
           </Slider>
           <button
@@ -209,13 +218,8 @@ export const NavbarMenyu = () => {
           </button>
         </div>
       </div>
-
-      <div>{counter === 1 && <FirstFood />}</div>
-      {/* <div>{counter === 2 && <SecondFood />}</div>
-      <div>{counter === 3 && <ThirdFood />}</div>
-      <div>{counter === 4 && <FourthFood />}</div>
-      <div>{counter === 5 && <FifthFood />}</div>
-      <div>{counter === 6 && <SixFood />}</div> */}
+      <FirstFood activeMenuItem={activeMenuItem} />
+      {/* <div>{counter === 1 && }</div> */}
     </>
   );
 };

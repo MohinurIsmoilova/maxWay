@@ -3,7 +3,7 @@ import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
 import RamenDiningOutlinedIcon from "@mui/icons-material/RamenDiningOutlined";
 import { Modal } from "./Modal";
 
-export const FirstFood = () => {
+export const FirstFood = ({ activeMenuItem }) => {
   const [todos, setTodos] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,20 +53,46 @@ export const FirstFood = () => {
     <div>
       {chunkedTodos.map((chunk, index) => (
         <div key={index}>
-          {index === 0 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Maxi BOX</h2>}
-          {index === 1 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Klab-Sendvich</h2>}
-          {index === 2 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Lavash</h2>}
-          {index === 3 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Shaurma</h2>}
+          {index === 0 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Maxi BOX</h2>
+          )}
+          {index === 1 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Klab-Sendvich</h2>
+          )}
+          {index === 2 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Lavash</h2>
+          )}
+          {index === 3 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Shaurma</h2>
+          )}
 
-          {index === 4 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Panini</h2>}
-          {index === 5 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Burger</h2>}
-          {index === 6 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Donar Kebab</h2>}
-          {index === 7 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Hot-Dog</h2>}
-          {index === 8 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Gazaklar</h2>}
-          {index === 9 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Tamaddilar</h2>}
-          {index === 10 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Desertlar</h2>}
-          {index === 11 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Ichimliklar</h2>}
-          {index === 12 && <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Souslar</h2>}
+          {index === 4 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Panini</h2>
+          )}
+          {index === 5 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Burger</h2>
+          )}
+          {index === 6 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Donar Kebab</h2>
+          )}
+          {index === 7 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Hot-Dog</h2>
+          )}
+          {index === 8 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Gazaklar</h2>
+          )}
+          {index === 9 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Tamaddilar</h2>
+          )}
+          {index === 10 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Desertlar</h2>
+          )}
+          {index === 11 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Ichimliklar</h2>
+          )}
+          {index === 12 && (
+            <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Souslar</h2>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-3">
             {chunk.map((todo) => (
