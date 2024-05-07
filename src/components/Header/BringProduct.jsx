@@ -6,13 +6,31 @@ import { MapYandex } from "../../pages/MapYandex";
 
 export const BringProduct = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [highlightedAddress, setHighlightedAddress] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
+    setIsButtonDisabled(true); // Disable the button when input changes
   };
 
   const clearSearch = () => {
     setSearchQuery("");
+    setIsButtonDisabled(true); // Disable the button when search is cleared
+  };
+
+  const handleHighlightAddress = (address) => {
+    setHighlightedAddress(address);
+    setIsButtonDisabled(false); // Enable the button when an item is clicked
+  };
+
+  const handleDesignationButtonClick = () => {
+    const restaurant = ruyhat.find(
+      (item) => item.filial.toLowerCase() === searchQuery.toLowerCase()
+    );
+    if (restaurant) {
+      setHighlightedAddress(restaurant.address);
+    }
   };
 
   return (
@@ -20,7 +38,6 @@ export const BringProduct = () => {
       <div className="flex">
         <div>
           <div className="mt-5 w-full">
-            {/* Adjust max height as needed */}
             <div className="relative">
               <input
                 type="text"
@@ -50,7 +67,10 @@ export const BringProduct = () => {
                 .map((item) => (
                   <div
                     key={item.id}
-                    className="w-full h-[100px] rounded-2xl p-3 border-[1px] border-purple-900 mb-3"
+                    className={`w-full h-[100px] rounded-2xl p-3 border-[1px] border-purple-900 mb-3 ${
+                      item.address === highlightedAddress ? "bg-purple-100" : ""
+                    }`}
+                    onClick={() => handleHighlightAddress(item.address)}
                   >
                     <div className="flex">
                       <LocationOnOutlinedIcon className="text-purple-900" />
@@ -75,8 +95,13 @@ export const BringProduct = () => {
             </div>
           </div>
 
-          {/* button */}
-          <button className="w-full bg-purple-900 text-white font-semibold rounded-3xl h-[46px] mt-4">
+          <button
+            onClick={handleDesignationButtonClick}
+            className={`w-full bg-purple-900 text-white font-semibold rounded-3xl h-[46px] mt-4 ${
+              isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isButtonDisabled}
+          >
             Belgilash
           </button>
         </div>
@@ -88,4 +113,3 @@ export const BringProduct = () => {
   );
 };
 
-export default BringProduct;
