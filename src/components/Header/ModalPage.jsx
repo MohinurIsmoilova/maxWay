@@ -37,9 +37,9 @@ export const ModalPage = () => {
           {/* buttons */}
         </div>
 
-        <div>
+        {/* <div>
           sdfgh
-        </div>
+        </div> */}
       </div>
     </>
   );
