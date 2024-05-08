@@ -113,22 +113,54 @@ export const Korzina = () => {
           </div>
           {cartItems.map((item) => (
             <li key={item.id}>
-              <div className="w-[780px] h-[150px] shadow-sm rounded-2xl p-4 flex pt-6 pl-7">
+              <div className="md:w-[780px] w-[350px] md:h-[150px] h-[170px] shadow-sm rounded-2xl p-4 flex pt-6 pl-7">
                 <div className="flex space-x-4 w-[56%]">
                   <img
                     src={item.productImage}
                     alt={item.productName}
-                    className="w-[90px] h-[90px] object-cover rounded-2xl"
+                    className="w-[90px] md:h-[90px] h-[120px] object-cover rounded-2xl"
                   />
                   <div>
-                    <p className="text-xl">{item.productName}</p>
+                    <p className="md:text-xl">{item.productName}</p>
                     <p className="text-slate-500 mt-1 ml-2 w-[70%]">
                       {item.productTitle}
                     </p>
+
+                    <div className="flex justify-between gap-20 md:hidden relative bottom-3">
+                      <div>
+                        <p className="font-bold text-[18px] w-[180%] text-gray-800 mt-7">
+                          {item.productPrice} so'm
+                        </p>
+                      </div>
+                      <div className="md:w-[140px] w-[78px] h-[38px] relative flex md:space-x-9 space-x-4 p-2 border-[1px] mt-5 border-purple-800 rounded-3xl">
+                        <button
+                          className="md:text-3xl text-2xl md:ml-4 ml-2 relative bottom-2"
+                          onClick={() => {
+                            if (itemCounts[item.id] <= 1) {
+                              openModal(item);
+                            } else {
+                              decrementCount(item.id);
+                            }
+                          }}
+                        >
+                          -
+                        </button>
+
+                        <h2 className="md:text-xl relative right-2 bottom-[2px]">
+                          {itemCounts[item.id] || 1}{" "}
+                        </h2>
+                        <button
+                          className="md:text-3xl text-2xl md:right-6 right-4 relative bottom-[7px]"
+                          onClick={() => incrementCount(item.id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex justify-between gap-14">
+                <div className="md:flex justify-between gap-14 hidden">
                   <div className="w-[140px] h-[40px] relative flex space-x-9 p-2 border-[1px] mt-5 border-purple-800 rounded-3xl">
                     <button
                       className="text-3xl ml-4 relative bottom-2"
@@ -214,19 +246,6 @@ export const Korzina = () => {
             <h2 className="text-xl text-gray-800">Yetkazib berish</h2>
             <p className="text-xl text-gray-800">0 so'm</p>
           </div>
-
-          {/* <div className="w-[330px] mt-4 h-[1px] bg-slate-400"></div>
-          <div className="flex items-start justify-between mt-3">
-            <h2 className="text-xl text-gray-800">To'lash uchun</h2>
-            <p className="text-xl text-gray-800">{totalPrice} so'm</p>
-          </div>
-
-          <button className="w-[330px] h-[50px] rounded-3xl mt-4 font-semibold bg-slate-300 text-slate-400">
-            To'lov sahifasiga o'tish
-          </button>
-          <p className="text-red-600 text-[13px] ml-5 mt-1">
-            Eng kam buyurtma narxi 40 000 so'm bo'lishi kerak
-          </p> */}
 
           {totalPrice >= minimumOrderPrice ? (
             <React.Fragment>
