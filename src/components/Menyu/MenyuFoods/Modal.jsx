@@ -134,15 +134,15 @@ export const Modal = ({ isOpen, onClose, card }) => {
       }}
     >
       <div
-        className="bg-white rounded-lg w-[730px] h-[540px] flex flex-col relative"
+        className="bg-white rounded-lg md:w-[730px] h-[540px] w-[386px] flex flex-col relative"
         onClick={(e) => e.stopPropagation()}
       >
         <CloseOutlinedIcon
           className="absolute top-4 right-4 cursor-pointer"
           onClick={onClose}
         />
-        <div className="flex">
-          <div className="flex mt-32 w-[320px]">
+        <div className="md:flex overflow-y-auto">
+          <div className="flex md:mt-32 mt-6 md:w-[320px] ml-6">
             <img
               src={card.productImage}
               alt="img"
@@ -150,18 +150,18 @@ export const Modal = ({ isOpen, onClose, card }) => {
             />
           </div>
           {/* scroll */}
-          <div className="overflow-y-auto h-[460px]">
-            <div className="flex flex-col ml-10 mt-9">
-              <h1 className="font-semibold text-2xl mb-2">
+          <div className="md:overflow-y-auto h-[460px]">
+            <div className="flex flex-col md:ml-10 ml-6 md:mt-9 mt-4">
+              <h1 className="font-semibold md:text-2xl text-xl md:mb-2">
                 {card.productName}
               </h1>
-              <p className="text-[17px] text-gray-500 mt-2 mb-4 w-[92%]">
+              <p className="text-[17px] md:text-gray-500 text-zinc-400 mt-2 mb-4 w-[92%]">
                 {card.productTitle}
               </p>
 
               {/* 1 st div */}
 
-              <div className="w-[360px] h-[84px] mt-2 rounded-xl border-2 p-3">
+              <div className="md:w-[360px] w-[350px] h-[84px] mt-2 rounded-xl border-2 p-3">
                 <h2 className="font-normal text-gray-600">kartoshka-fri</h2>
 
                 <div className="flex space-x-3 mt-2">
@@ -177,7 +177,7 @@ export const Modal = ({ isOpen, onClose, card }) => {
                     <button>+</button>
                   </div>
 
-                  <h2 className="text-gray-500 text-[14px] mt-[1px] relative left-[75px]">
+                  <h2 className="text-gray-500 text-[14px] mt-[1px] relative md:left-[75px] left-[64px]">
                     + 0 so'm
                   </h2>
                 </div>
@@ -187,7 +187,7 @@ export const Modal = ({ isOpen, onClose, card }) => {
 
               {/* 2nd div */}
 
-              <div className="w-[360px] h-[164px] mt-6 rounded-xl border-2 p-3">
+              <div className="md:w-[360px] w-[350px] h-[164px] mt-6 rounded-xl border-2 p-3">
                 <h2 className="font-semibold text-gray-600">
                   siz tanlagan sous
                 </h2>
@@ -273,7 +273,7 @@ export const Modal = ({ isOpen, onClose, card }) => {
               {/* 2nd div */}
 
               {/* 3d div */}
-              <div className="w-[360px] h-[134px] mt-6 rounded-xl border-2 p-3">
+              <div className="md:w-[360px] w-[350px] h-[134px] mt-6 rounded-xl border-2 p-3">
                 <h2 className="font-semibold text-gray-600">ichimlik</h2>
                 {/*  */}
                 <div className="flex items-center justify-between mt-2 leading-10">
@@ -408,7 +408,7 @@ export const Modal = ({ isOpen, onClose, card }) => {
           {/* scroll */}
         </div>
         {/* buttons */}
-        <div className="mt-4 flex space-x-24 ml-[335px]">
+        <div className="md:mt-4 flex space-x-24 md:ml-[300px] ml-4 mt-3">
           <div className="w-[140px] h-[43px] flex space-x-9 p-2 border-[1px] border-purple-800 rounded-3xl">
             <button
               className="text-3xl ml-4 relative bottom-2"
