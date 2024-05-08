@@ -70,38 +70,45 @@ export const Korzina = () => {
     <div className="mt-8">
       <h1 className="font-bold md:text-4xl text-[28px]">Savatcha</h1>
 
-      <div className="flex space-x-12">
-        <ul className="mt-10">
-          <div className="w-[780px] h-[165px] shadow-sm rounded-2xl p-4 flex space-x-4 pt-12 pl-7">
+      <div className="md:flex md:space-x-12">
+        <ul className="md:mt-10">
+          <div className="md:w-[780px] w-[350px] h-[165px] shadow-sm rounded-2xl p-4 flex space-x-4 pt-12 pl-7">
             <img
               src="https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fe876e478-efea-4992-a7ab-0b5cdb650582&w=1200&q=75"
               alt="img"
               className="w-[90px] h-[90px] object-cover rounded-2xl"
             />
-            <div>
-              <p className="text-xl font-semibold mt-6">Kraft packet</p>
+            <div className="relative bottom-3 md:top-0">
+              <p className="md:text-xl text-[17px] w-full font-semibold mt-6">
+                Kraft packet
+              </p>
+              <p className="font-bold md:hidden block text-gray-800 mt-2">
+                2 000 so'm
+              </p>
             </div>
 
-            <div className="flex space-x-16 relative left-[176px]">
-              <div className="w-[140px] h-[40px] relative flex space-x-9 p-2 border-[1px] mt-5 border-purple-800 rounded-3xl">
+            <div className="flex space-x-16 relative md:left-[176px] left-5">
+              <div className="md:w-[140px] md:h-[40px] w-[80px] h-[36px] relative flex md:space-x-9 space-x-4 p-2 border-[1px] mt-5 border-purple-800 rounded-3xl">
                 <button
-                  className="text-3xl ml-4 relative bottom-2"
+                  className="md:text-3xl text-2xl md:ml-4 ml-2 relative bottom-2"
                   // onClick={decrementCount}
                 >
                   -
                 </button>
-                <h2 className="text-xl relative right-2 bottom-[2px]">1</h2>
+                <h2 className="md:text-xl relative md:right-2 right-3 bottom-[2px]">
+                  1
+                </h2>
                 <button
-                  className="text-3xl right-6 relative bottom-[7px]"
+                  className="md:text-3xl text-2xl right-6 relative bottom-[7px]"
                   // onClick={incrementCount}
                 >
                   +
                 </button>
-
-                
               </div>
 
-              <p className="font-bold text-xl text-gray-800 mt-7">2 000 so'm</p>
+              <p className="font-bold hidden md:block md:text-xl text-gray-800 mt-7">
+                2 000 so'm
+              </p>
             </div>
           </div>
           {cartItems.map((item) => (
@@ -196,7 +203,7 @@ export const Korzina = () => {
 
         {/* Modal Page end */}
 
-        <div className="w-[380px] h-[310px] rounded-2xl shadow-md p-6 mt-10">
+        <div className="md:w-[380px] h-[310px] w-[360px] rounded-2xl shadow-md p-6 mt-10">
           <h1 className="text-2xl font-bold">Umumiy</h1>
 
           <div className="flex items-start justify-between mt-3">

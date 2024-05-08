@@ -94,7 +94,7 @@ export const FirstFood = ({ activeMenuItem }) => {
             <h2 className="text-3xl font-bold mt-5 mb-6 ml-1">Souslar</h2>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-3">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 space-y-3">
             {chunk.map((todo) => (
               <div
                 key={todo.id}
@@ -106,9 +106,9 @@ export const FirstFood = ({ activeMenuItem }) => {
                   className="w-full h-60 object-cover"
                 />
                 <div className="p-4">
-                  <h1 className="font-semibold text-xl">{todo.productName}</h1>
+                  <h1 className="font-semibold md:text-xl">{todo.productName}</h1>
                   <p className="text-sm text-gray-500">{todo.productTitle}</p>
-                  <div className="flex justify-between items-center mt-3">
+                  <div className="md:flex justify-between items-center mt-3">
                     <div className="flex items-center">
                       <h1 className="font-bold text-lg text-slate-900">
                         {todo.productPrice}
@@ -117,7 +117,7 @@ export const FirstFood = ({ activeMenuItem }) => {
                     </div>
                     <button
                       onClick={() => openModal(todo)}
-                      className="px-4 py-2 bg-purple-900 text-white rounded-2xl"
+                      className="px-4 py-2 bg-purple-900 text-white rounded-3xl mt-2 w-full md:w-[100px]"
                     >
                       Qo'shish
                     </button>
