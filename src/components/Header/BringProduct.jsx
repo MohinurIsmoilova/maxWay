@@ -8,20 +8,21 @@ export const BringProduct = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [highlightedAddress, setHighlightedAddress] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false); // New state for modal visibility
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
-    setIsButtonDisabled(true); // Disable the button when input changes
+    setIsButtonDisabled(true);
   };
 
   const clearSearch = () => {
     setSearchQuery("");
-    setIsButtonDisabled(true); // Disable the button when search is cleared
+    setIsButtonDisabled(true);
   };
 
   const handleHighlightAddress = (address) => {
     setHighlightedAddress(address);
-    setIsButtonDisabled(false); // Enable the button when an item is clicked
+    setIsButtonDisabled(false);
   };
 
   const handleDesignationButtonClick = () => {
@@ -30,11 +31,31 @@ export const BringProduct = () => {
     );
     if (restaurant) {
       setHighlightedAddress(restaurant.address);
+      setIsModalOpen(false); // Close modal when button is clicked
     }
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <>
+      {isModalOpen && ( // Render modal only when isModalOpen is true
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg p-8 w-[400px]">
+            <h2 className="text-xl font-bold mb-4">Modal Content</h2>
+            <p>Modal content goes here...</p>
+            <button
+              className="mt-4 bg-purple-900 text-white px-4 py-2 rounded-lg"
+              onClick={handleModalClose}
+            >
+              Close Modal
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="flex">
         <div>
           <div className="mt-5 w-full">

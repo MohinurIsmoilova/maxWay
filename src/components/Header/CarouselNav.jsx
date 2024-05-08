@@ -33,10 +33,18 @@ export const CarouselNav = () => {
             className="rounded-[25px] w-full md:h-[500px] h-[200px]"
           />
         </div>
+
+        <div>
+          <img
+            src="https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fceefc9aa-89e1-4464-9415-7cabc48a65d1&w=1200&q=75"
+            alt="maxway"
+            className="rounded-[25px] w-full md:h-[500px] h-[200px]"
+          />
+        </div>
       </Slider>
 
       <button
-        className="relative bottom-[330px] right-5 shadow-lg w-[50px] h-[50px] transform -translate-y-1/2 bg-white rounded-full text-black focus:outline-none"
+        className="relative md:bottom-[330px] bottom-40 right-5 shadow-lg w-[50px] h-[50px] transform -translate-y-1/2 bg-white rounded-full text-black focus:outline-none"
         onClick={() => {
           document.querySelector(".slick-prev").click();
         }}
@@ -44,7 +52,7 @@ export const CarouselNav = () => {
         <KeyboardArrowLeftIcon />
       </button>
       <button
-        className="relative bottom-[330px] left-[1125px] shadow-lg w-[50px] h-[50px] transform -translate-y-1/2 bg-white rounded-full text-black focus:outline-none"
+        className="relative md:bottom-[330px] bottom-[160px] md:left-[1125px] left-[266px] shadow-lg w-[50px] h-[50px] transform -translate-y-1/2 bg-white rounded-full text-black focus:outline-none"
         onClick={() => {
           document.querySelector(".slick-next").click();
         }}

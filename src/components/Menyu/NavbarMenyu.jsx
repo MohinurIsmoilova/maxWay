@@ -9,7 +9,7 @@ import { FirstFood } from "./MenyuFoods/index";
 
 export const NavbarMenyu = () => {
   const sliderRef = useRef();
-   const [activeMenuItem, setActiveMenuItem] = useState(0);
+  const [activeMenuItem, setActiveMenuItem] = useState(0);
 
   const settings = {
     dots: false,
@@ -51,35 +51,17 @@ export const NavbarMenyu = () => {
     ],
   };
 
-
-const handleMenuItemClick = (index, name) => {
-  setActiveMenuItem(index);
-  sliderRef.current.slickGoTo(index);
-  const h2Tags = document.querySelectorAll("h2");
-  h2Tags.forEach((tag, idx) => {
-    console.log("Found h2 tag with text content:", tag.textContent.trim());
-    if (tag.textContent.trim() === name.trim()) {
-      tag.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-};
-
-// const handleMenuItemClick = (index, name) => {
-//   setActiveMenuItem(index); // Set active menu item
-//   sliderRef.current.slickGoTo(index); // Go to the corresponding slide
-
-//   // Debugging statement
-//   console.log("Clicked name:", name);
-
-//   // Find the h2 tag with the matching text content and scroll to it
-//   const targetSection = document.querySelector(`h2:contains(${name})`);
-//   console.log("Target section:", targetSection);
-//   if (targetSection) {
-//     targetSection.scrollIntoView({ behavior: "smooth" });
-//   } else {
-//     console.log("Section not found.");
-//   }
-// };
+  const handleMenuItemClick = (index, name) => {
+    setActiveMenuItem(index);
+    sliderRef.current.slickGoTo(index);
+    const h2Tags = document.querySelectorAll("h2");
+    h2Tags.forEach((tag, idx) => {
+      console.log("Found h2 tag with text content:", tag.textContent.trim());
+      if (tag.textContent.trim() === name.trim()) {
+        tag.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  };
 
   const goToNext = () => {
     sliderRef.current.slickNext();

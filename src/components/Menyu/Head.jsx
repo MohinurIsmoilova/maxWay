@@ -6,7 +6,9 @@ export const Head = () => {
   return (
     <>
       <CarouselNav />
-      <NavbarMenyu />
+      <div className='relative bottom-20'>
+        <NavbarMenyu />
+      </div>
     </>
   );
 }
