@@ -14,15 +14,14 @@ export const SendProduct = () => {
   const [selectedAddress, setSelectedAddress] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // const handleInputChange = (e) => {
-  //   const query = e.target.value;
-  //   setSearchQuery(query);
-  //   // Filter addresses based on the query
-  //   const filteredAddresses = tashkentAddresses.filter((address) =>
-  //     address.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   setSearchResults(filteredAddresses);
-  // };
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    const filteredAddresses = ruyhat.filter((item) =>
+      item.address.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(filteredAddresses);
+  };
 
   const handleSelectAddress = (address) => {
     setSelectedAddress(address);
@@ -34,17 +33,6 @@ export const SendProduct = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    // Filter addresses from ruyhat array based on the query
-    const filteredAddresses = ruyhat.filter((item) =>
-      item.address.toLowerCase().includes(query.toLowerCase())
-    );
-    setSearchResults(filteredAddresses);
-  };
-
-  // Function to handle clearing input
   const handleClearInput = () => {
     setSearchQuery("");
     setSearchResults([]);
@@ -70,12 +58,15 @@ export const SendProduct = () => {
         </div>
 
         {searchResults.length > 0 && (
-          <div className="overflow-y-auto max-h-[300px] mt-10 shadow-lg p-5">
+          <div className="overflow-y-auto max-h-[260px] mt-10 shadow-lg p-5">
             <ul>
               {searchResults.map((item) => (
                 <li key={item.id}>
-                  <div className="w-[408px] h-[70px] rounded-xl hover:bg-purple-100 p-5 mt-2">
-                    <p className="text-zinc-600">{item.address}</p> {/* Render the address property */}
+                  <div
+                    className="w-[408px] h-[70px] rounded-xl hover:bg-purple-100 p-5 mt-2"
+                    onClick={() => handleSelectAddress(item.address)}
+                  >
+                    <p className="text-zinc-600">{item.address}</p>
                   </div>
                 </li>
               ))}
@@ -84,7 +75,7 @@ export const SendProduct = () => {
         )}
 
         <button
-          className={`bg-slate-300 w-[470px] top-56 relative h-[50px] hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded-3xl ${
+          className={`bg-slate-300 w-[450px] relative h-[50px] top-9 text-gray-700 font-bold py-2 px-4 rounded-3xl ${
             !selectedAddress && "opacity-50 cursor-not-allowed"
           }`}
           onClick={handleButtonClick}
