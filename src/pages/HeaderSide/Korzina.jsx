@@ -34,6 +34,13 @@ export const Korzina = () => {
       const updatedCounts = { ...itemCounts };
       updatedCounts[itemId] -= 1;
       setItemCounts(updatedCounts);
+
+      // Calculate the price of the item being decremented
+      const itemPrice =
+        cartItems.find((item) => item.id === itemId)?.productPrice || 0;
+
+      // Subtract the price of the item from the total price
+      setTotalPrice((prevTotalPrice) => prevTotalPrice - itemPrice);
     }
   };
 
@@ -91,16 +98,16 @@ export const Korzina = () => {
               <div className="md:w-[140px] md:h-[40px] w-[80px] h-[36px] relative flex md:space-x-9 space-x-4 p-2 border-[1px] mt-5 border-purple-800 rounded-3xl">
                 <button
                   className="md:text-3xl text-2xl md:ml-4 ml-2 relative bottom-2"
-                  // onClick={decrementCount}
+                  onClick={decrementCount}
                 >
                   -
                 </button>
                 <h2 className="md:text-xl relative md:right-2 right-3 bottom-[2px]">
-                  1
+                  {count}
                 </h2>
                 <button
                   className="md:text-3xl text-2xl right-6 relative bottom-[7px]"
-                  // onClick={incrementCount}
+                  onClick={incrementCount}
                 >
                   +
                 </button>
@@ -113,7 +120,7 @@ export const Korzina = () => {
           </div>
           {cartItems.map((item) => (
             <li key={item.id}>
-              <div className="md:w-[780px] w-[350px] md:h-[150px] h-[170px] shadow-sm rounded-2xl p-4 flex pt-6 pl-7">
+              <div className="md:w-[780px] w-[350px]md:h-[150px] h-[170px] shadow-sm rounded-2xl p-4 flex pt-6 pl-7">
                 <div className="flex space-x-4 w-[56%]">
                   <img
                     src={item.productImage}

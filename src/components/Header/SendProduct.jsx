@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
+import { MapYandex } from "../../pages/MapYandex";
+import ruyhat from "../../ruyhat";
 
-// Sample addresses for Tashkent city
 const tashkentAddresses = [
   "Address 1, Tashkent",
   "Address 2, Tashkent",
   "Address 3, Tashkent",
-  // Add more addresses as needed
 ];
 
 export const SendProduct = () => {
@@ -14,13 +14,32 @@ export const SendProduct = () => {
   const [selectedAddress, setSelectedAddress] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // Function to handle input change and filter addresses
+  // const handleInputChange = (e) => {
+  //   const query = e.target.value;
+  //   setSearchQuery(query);
+  //   // Filter addresses based on the query
+  //   const filteredAddresses = tashkentAddresses.filter((address) =>
+  //     address.toLowerCase().includes(query.toLowerCase())
+  //   );
+  //   setSearchResults(filteredAddresses);
+  // };
+
+  const handleSelectAddress = (address) => {
+    setSelectedAddress(address);
+  };
+
+  const handleButtonClick = () => {
+    if (selectedAddress) {
+      console.log("Selected address:", selectedAddress);
+    }
+  };
+
   const handleInputChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    // Filter addresses based on the query
-    const filteredAddresses = tashkentAddresses.filter((address) =>
-      address.toLowerCase().includes(query.toLowerCase())
+    // Filter addresses from ruyhat array based on the query
+    const filteredAddresses = ruyhat.filter((item) =>
+      item.address.toLowerCase().includes(query.toLowerCase())
     );
     setSearchResults(filteredAddresses);
   };
@@ -31,63 +50,53 @@ export const SendProduct = () => {
     setSearchResults([]);
   };
 
-  // Function to handle selecting an address
-  const handleSelectAddress = (address) => {
-    setSelectedAddress(address);
-  };
-
-  // Function to handle clicking the button
-  const handleButtonClick = () => {
-    // Perform the action when the button is clicked, for example, save the selected address
-    if (selectedAddress) {
-      // Perform the action here (e.g., save the selected address)
-      console.log("Selected address:", selectedAddress);
-    }
-  };
-
   return (
-    <div className="max-w-md mx-auto">
-      <div className="mb-4 flex">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleInputChange}
-          className="mt-1 relative right-2 top-5 w-[590px] h-[50px] shadow-sm sm:text-sm border-[1px] rounded-lg p-4"
-          placeholder="Yetkazib berish manzili"
-        />
-        {searchQuery && (
-          <ClearOutlinedIcon
-            className="mt-9 right-16 relative text-gray-700 cursor-pointer"
-            onClick={handleClearInput}
+    <div className="flex">
+      <div className="max-w-md mx-auto">
+        <div className="mb-4 flex">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleInputChange}
+            className="mt-1 relative right-2 top-5 w-[590px] h-[50px] shadow-sm sm:text-sm border-[1px] rounded-lg p-4"
+            placeholder="Yetkazib berish manzili"
           />
+          {searchQuery && (
+            <ClearOutlinedIcon
+              className="mt-9 right-16 relative text-gray-700 cursor-pointer"
+              onClick={handleClearInput}
+            />
+          )}
+        </div>
+
+        {searchResults.length > 0 && (
+          <div className="overflow-y-auto max-h-[300px] mt-10 shadow-lg p-5">
+            <ul>
+              {searchResults.map((item) => (
+                <li key={item.id}>
+                  <div className="w-[408px] h-[70px] rounded-xl hover:bg-purple-100 p-5 mt-2">
+                    <p className="text-zinc-600">{item.address}</p> {/* Render the address property */}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
+
+        <button
+          className={`bg-slate-300 w-[470px] top-56 relative h-[50px] hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded-3xl ${
+            !selectedAddress && "opacity-50 cursor-not-allowed"
+          }`}
+          onClick={handleButtonClick}
+          disabled={!selectedAddress}
+        >
+          Belgilash
+        </button>
       </div>
 
-      {/* Render search results as select options */}
-      {searchResults.length > 0 && (
-        <select
-          value={selectedAddress}
-          onChange={(e) => handleSelectAddress(e.target.value)}
-          className="mb-4 w-[495px] h-[50px] shadow-sm sm:text-sm border-[1px] rounded-lg p-4"
-        >
-          <option value="">Select an address</option>
-          {searchResults.map((address, index) => (
-            <option key={index} value={address}>
-              {address}
-            </option>
-          ))}
-        </select>
-      )}
-
-      <button
-        className={`bg-slate-300 w-[470px] top-56 relative h-[50px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl ${
-          !selectedAddress && "opacity-50 cursor-not-allowed"
-        }`}
-        onClick={handleButtonClick}
-        disabled={!selectedAddress}
-      >
-        Find Addresses
-      </button>
+      <div className="flex-shrink-0 w-[410px] ml-10 h-[480px] relative bottom-12 overflow-hidden rounded-xl">
+        <MapYandex />
+      </div>
     </div>
   );
 };
